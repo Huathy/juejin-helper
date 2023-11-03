@@ -320,7 +320,12 @@ async function run(args) {
     const checkin = new CheckIn(cookie);
 
     await utils.wait(utils.randomRangeNumber(1000, 5000)); // 初始等待1-5s
-    await checkin.run(); // 执行
+    try{
+      await checkin.run(); // 执行
+    }catch(e){
+       // 捕获上面抛出的异常！
+      console.log(e);
+    }
 
     const content = checkin.toString();
     console.log(content); // 打印结果
